@@ -8,8 +8,4 @@ users.users.username = {
   extraGroups = [ "networkmanager" "wheel" ];
 };
 
-users.extraUsers.username = {
- 	shell = pkgs.zsh; # if you like to set a default shell theme
-};
-
 }

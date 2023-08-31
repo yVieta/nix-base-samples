@@ -6,18 +6,16 @@ let
 in
 {
 nixpkgs.config.allowUnfree = true;
-# 	
 imports =
   [
     system/bootloader.nix
     system/hardware-configuration.nix
-    #system/nvidia.nix
+    system/nvidia.nix
     desktops/desktop_common.nix
     desktops/desktop_gnome.nix
-    packages/packages.nix
+    packages.nix
     users/username.nix
   ];
-
    
   #Unstable
   nixpkgs.overlays = [
@@ -26,7 +24,5 @@ imports =
        #vscodium = unstable.vscodium;
      })
   ];
-
-
 
 }

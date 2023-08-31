@@ -1,4 +1,4 @@
-# basic Nix config on ext4
+# basic Nix config on ext4 
 { config, pkgs, ... }: 
 
 let

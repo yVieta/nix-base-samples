@@ -6,6 +6,7 @@ services.xserver.displayManager.gdm.enable = true;
 services.xserver.desktopManager.gnome.enable = true;
 
 environment.systemPackages = with pkgs; [
+	# If you like gnome extenmsion for you gnome
 	gnome.gnome-tweaks
         gnome.gnome-tweaks
 	gnomeExtensions.captivate
@@ -15,8 +16,6 @@ environment.systemPackages = with pkgs; [
   	gnomeExtensions.clipman
   	gnomeExtensions.tray-icons-reloaded
   	pkgs.gnome.gnome-boxes 
-	timeshift
-
 ];
 
 }
