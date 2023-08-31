@@ -1,7 +1,7 @@
 # nix-base-sample
 Here are some basic nix config samples.\
 Feel free to contribute your own config.\
-I/WE hope it is a helpfull resource
+I/WE hope it is a helpfull resource.
 
 ## Notes
 If there are outdated syntaxes or anything that needs to be corrected feel free to make a pull request.
