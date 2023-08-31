@@ -1,4 +1,4 @@
-# basic Nix config on ext4 
+# basic Nix config on supported by the vanilla kernels linux
 { config, pkgs, ... }: 
 
 let
