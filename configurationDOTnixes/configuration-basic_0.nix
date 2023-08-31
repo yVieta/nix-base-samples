@@ -28,7 +28,6 @@ in
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -58,13 +57,14 @@ in
 
   # Configure console keymap
   console.keyMap = "de";
-  
+  # To enable zsh
+  programs.zsh.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.username = {
     isNormalUser = true;
-    description = "Vieta";
+    description = "username";
     extraGroups = [ "networkmanager" "wheel" ];
-    
+    shell = pkgs.zsh; # if you want to use zsh as you default
     packages = with pkgs; [ 
     ];
   };
