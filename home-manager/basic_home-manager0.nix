@@ -3,13 +3,15 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "vieta";
-  home.homeDirectory = "/home/vieta";
+  home.username = "username";
+  home.homeDirectory = "/home/username";
   programs = {
+  # The shell you like to custom
     zsh = {
         enable = true;
         enableAutosuggestions = true;
         #settings = {};
+	# shellrc
          initExtra = ''
          export PATH="$HOME/.apps:$PATH"
          export PATH="$HOME/.guix-profile/bin:$PATH"
@@ -18,6 +20,7 @@
          hed() { hx ~/.config/home-manager/home.nix }
          hms() { home-manager switch } 
          '';
+	# omz: https://ohmyz.sh/
        oh-my-zsh = {
           enable = true;
           plugins = [
@@ -25,7 +28,7 @@
               "command-not-found"
               "poetry"
           ];
-       #   theme = "murilasso";
+       #   theme = "murilasso"; # if you like to add a prompt from omz
         };
       shellAliases = {
         ls = "exa";
@@ -65,7 +68,7 @@ programs.starship = {
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "XX.YY"; # Please read the comment before changing.
   
    nixpkgs = {
     config = {
@@ -79,14 +82,9 @@ programs.starship = {
   home.packages = with pkgs; [
     texlive.combined.scheme-full
     exa
+    du-dust
     helix
-    unrar
     musikcube
-    dpkg
-    # Webdev
-    #emscripten
-    #qtcreator
-    #ani-cli
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -114,11 +112,11 @@ programs.starship = {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    # HELIX    
+    # HELIX editor theme  
     ".config/helix/config.toml".text = ''
     theme ="base16_transparent" 
     '';
-    # PROMPT
+    # PROMPT: https://starship.rs/
     ".config/starship.toml".text = ''
     "$schema" = 'https://starship.rs/config-schema.json'
     add_newline = true
