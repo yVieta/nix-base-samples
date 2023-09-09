@@ -127,7 +127,7 @@ in
   # Enable fonts to use on your system.  You should make sure to add at least
   # one English font (like dejavu_fonts), as well as Japanese fonts like
   # "ipafont" and "kochi-substitute".
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     carlito
     dejavu_fonts
     ipafont
