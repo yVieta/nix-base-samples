@@ -1,11 +1,6 @@
 # basic Nix config on supported by the vanilla kernels linux
 { config, pkgs, ... }: 
-
-let
-  #sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos-unstable
-  unstable = import <nixos-unstable> {};
   
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -63,7 +58,7 @@ in
   users.users.username = {
     isNormalUser = true;
     description = "username";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     shell = pkgs.zsh; # if you want to use zsh as you default
     packages = with pkgs; [ 
     ];
@@ -95,16 +90,11 @@ in
   pkgs.gnome.gnome-boxes # you do not need to add the pkgs.XY to install because of the inclusion of pkgs
 
   ];
-  
-  # Overlay for branch Unstable 
-  nixpkgs.overlays = [
-    (self: super: {
-       flatpak = unstable.flatpak;
-       vscodium = unstable.vscodium;
-     })
-  ];
 
   #FlatpakBind
+  # Borked
+  # See: https://github.com/NixOS/nixpkgs/issues/119433
+  /*
   system.fsPackages = [ pkgs.bindfs ];
   fileSystems = let
     mkRoSymBind = path: {
@@ -122,6 +112,7 @@ in
     "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
     "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
   };
+  */
 
   # Allow Fonts to be reached
   # Enable fonts to use on your system.  You should make sure to add at least
@@ -166,6 +157,8 @@ in
   
   # If you like to use podman 
    virtualisation = {
+    libvirtd.enable = true;
+    waydroid.enable = true;
     podman = {
       enable = true;
       dockerCompat = true;

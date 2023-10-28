@@ -17,12 +17,15 @@ imports =
     users/username.nix
   ];
    
-  #Unstable
-  nixpkgs.overlays = [
-    (self: super: {
-       flatpak = unstable.flatpak;
-       #vscodium = unstable.vscodium;
-     })
-  ];
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  }; 
+  # Automatic Garbage Collection
+  nix.gc = {
+   automatic = true;
+   dates = "weekly";
+   options = "--delete-older-than 7d";
+        };
 
 }

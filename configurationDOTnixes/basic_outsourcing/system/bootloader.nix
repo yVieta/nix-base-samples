@@ -7,8 +7,8 @@ boot.loader.systemd-boot.enable = true;
 boot.loader.efi.canTouchEfiVariables = true;
 boot.loader.efi.efiSysMountPoint = "/boot/efi";
 boot.kernelPackages = pkgs.linuxPackages_zen;    
-
-system.stateVersion = "22.11";
+# Add your Nixos version here
+system.stateVersion = "XX.YY";
 
 # Set your time zone.
 time.timeZone = "Europe/Berlin";

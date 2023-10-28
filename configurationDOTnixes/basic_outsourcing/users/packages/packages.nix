@@ -13,12 +13,7 @@ programs.gnupg.agent = {
 environment.systemPackages = with pkgs; [
   vim
   wget
-  ##For PC
-  #mullvad-vpn
-  #tailscale
   #cudaPackages.cudatoolkit
-  #vulkan-tools
-  flatpak
   gh
   distrobox
   podman

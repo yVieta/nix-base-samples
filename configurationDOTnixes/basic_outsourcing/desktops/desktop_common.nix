@@ -28,36 +28,9 @@ hardware.bluetooth.enable = true;
 #Zram
 zramSwap.enable = true;
 
-
 # OpenTabletDriver
 hardware.opentabletdriver.enable = true;
 hardware.opentabletdriver.daemon.enable = true;
-
-# MullvadVPN
-#services.mullvad-vpn.enable = true;
-
-# Tailscale
-#services.tailscale.enable = true;
-
-# Flatpak
-services.flatpak.enable = true;
-xdg.portal.enable = true;
-system.fsPackages = [ pkgs.bindfs ];
-fileSystems = let
-  mkRoSymBind = path: {
-    device = path;
-    fsType = "fuse.bindfs";
-    options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
-  };
-  aggregatedFonts = pkgs.buildEnv {
-    name = "system-fonts";
-    paths = config.fonts.fonts;
-    pathsToLink = [ "/share/fonts" ];
-  };
-in {
-  "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
-  "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
-};
 
 # Configure keymap in X11
 services.xserver = {
